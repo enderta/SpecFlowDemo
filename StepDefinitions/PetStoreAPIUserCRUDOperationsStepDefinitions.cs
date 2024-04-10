@@ -81,11 +81,5 @@ namespace SpecFlowProject1.StepDefinitions
             response = client.Execute(request);
         }
 
-        [Then(@"the response status code should be (.*)")]
-        public void ThenTheResponseStatusCodeShouldBe(int code)
-        {
-            ClassicAssert.AreEqual(code, (int)response.StatusCode);
-            Console.WriteLine();
-        }
     }
 }

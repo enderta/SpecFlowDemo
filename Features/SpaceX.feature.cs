@@ -20,22 +20,22 @@ namespace SpecFlowProject1.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("PetStore API User CRUD Operations")]
-    public partial class PetStoreAPIUserCRUDOperationsFeature
+    [NUnit.Framework.DescriptionAttribute("SpaceX")]
+    public partial class SpaceXFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "pet.feature"
+#line 1 "SpaceX.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PetStore API User CRUD Operations", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SpaceX", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,16 +74,27 @@ namespace SpecFlowProject1.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User Operations")]
-        [NUnit.Framework.CategoryAttribute("user")]
-        public void UserOperations()
+        [NUnit.Framework.DescriptionAttribute("Get upcoming launches")]
+        [NUnit.Framework.CategoryAttribute("space")]
+        [NUnit.Framework.TestCaseAttribute("/launches/upcoming", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("/launches/past", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("/launches/latest", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("/launches/next", "200", null)]
+        public void GetUpcomingLaunches(string endPoints, string statusCode, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "user"};
+            string[] @__tags = new string[] {
+                    "space"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User Operations", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 4
-  this.ScenarioInitialize(scenarioInfo);
+            argumentsOfScenario.Add("End Points", endPoints);
+            argumentsOfScenario.Add("Status Code", statusCode);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get upcoming launches", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 3
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -92,26 +103,11 @@ namespace SpecFlowProject1.Features
             else
             {
                 this.ScenarioStart();
+#line 4
+    testRunner.When(string.Format("I send a GET request to \"{0}\" spacex", endPoints), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 5
-    testRunner.Given("I have a valid user payload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 6
-    testRunner.When("I send a \"POST\" request to \"/user\" endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 7
-    testRunner.Then("The response status code should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 9
-    testRunner.When("I send a \"GET\" request to \"/user/username\" endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
-    testRunner.Then("The response status code should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 12
-    testRunner.When("I send a \"PUT\" request to \"/user/username\" endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 13
-    testRunner.Then("The response status code should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then(string.Format("The response status code should be {0}", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

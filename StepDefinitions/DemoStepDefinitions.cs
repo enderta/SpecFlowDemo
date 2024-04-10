@@ -7,11 +7,11 @@ using TechTalk.SpecFlow;
 public class DemoSteps
 {
     string title;
-    
+
     [Given(@"I am on the demo page (.*)")]
     public void GivenIAmOnTheDemoPage(string url)
     {
-        
+
         Driver.Initialize();
         Driver.driver.Navigate().GoToUrl(url);
         title = Driver.driver.Title;
@@ -22,6 +22,6 @@ public class DemoSteps
     [Then(@"the (.*) of page")]
     public void ThenTheTitleOfPage(string title)
     {
-      ClassicAssert.AreEqual(title, this.title);
+        ClassicAssert.AreEqual(title, this.title);
     }
 }
